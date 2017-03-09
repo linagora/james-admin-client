@@ -1,22 +1,19 @@
-'use strict';
-
 const gulp = require('gulp');
-const browserify  = require('browserify');
-const babelify    = require('babelify');
-const source      = require('vinyl-source-stream');
-const buffer      = require('vinyl-buffer');
-const uglify      = require('gulp-uglify');
-const sourcemaps  = require('gulp-sourcemaps');
+const browserify = require('browserify');
+const source = require('vinyl-source-stream');
+const buffer = require('vinyl-buffer');
+const uglify = require('gulp-uglify');
 const argv = require('yargs').argv;
 const runSeq = require('run-sequence');
 const clean = require('gulp-clean');
 const htmlMin = require('gulp-htmlmin');
 const gulpif = require('gulp-if');
 const webserver = require('gulp-webserver');
+const eslint = require('gulp-eslint');
 
-gulp.task('default', ['build']);
+gulp.task('default', ['lint', 'build']);
 
-gulp.task('dev',  () => {
+gulp.task('dev', () => {
   return runSeq('build', 'server', 'watch');
 });
 
@@ -37,7 +34,8 @@ gulp.task('html', () => {
 
 gulp.task('js', () => {
   let stream = browserify({
-      entries: './src/js/index.js', debug: true,
+      entries: './src/js/index.js',
+      debug: true,
       standalone: 'james'
     })
     .transform('babelify', { presets: ['es2015'] })
@@ -64,4 +62,11 @@ gulp.task('server', () => {
       host: '0.0.0.0',
       port: 8080
     }));
+});
+
+gulp.task('lint', () => {
+  return gulp.src(['gulpfile.js', 'src/**/*.js', 'examples/**/*.js'])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
 });

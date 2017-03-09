@@ -6,8 +6,8 @@ const SUCCESS_RESPONSE_CODES = [200, 201];
 function post(url, headers, data, raw) {
   return q.Promise(function(resolve, reject) {
     request({
-      url: url,
-      headers: headers,
+      url,
+      headers,
       method: 'POST',
       body: data,
       json: !raw
@@ -18,8 +18,8 @@ function post(url, headers, data, raw) {
 function put(url, headers, data, raw) {
   return q.Promise(function(resolve, reject) {
     request({
-      url: url,
-      headers: headers,
+      url,
+      headers,
       method: 'PUT',
       body: data,
       json: !raw
@@ -30,8 +30,8 @@ function put(url, headers, data, raw) {
 function get(url, headers) {
   return q.Promise(function(resolve, reject) {
     request({
-      url: url,
-      headers: headers,
+      url,
+      headers,
       method: 'GET'
     }, errorHandle(resolve, reject));
   });
@@ -50,7 +50,7 @@ function errorHandle(resolve, reject) {
     }
 
     resolve(body);
-  }
+  };
 }
 
 module.exports = {
