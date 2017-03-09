@@ -18,7 +18,7 @@ function test() {
   const options = {
     httpClient: httpClient,
     promiseProvider: null,
-    token: wrongToken,
+    token: token,
     apiUrl: 'http://192.168.1.160:8000'
   };
   const client = new Client(options);

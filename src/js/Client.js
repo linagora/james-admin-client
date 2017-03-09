@@ -1,18 +1,24 @@
+const domainApi = require('./api/domain');
+
 class Client {
   constructor(options) {
     this.httpClient = options.httpClient;
     this.promiseProvider = options.promiseProvider;
     this.apiUrl = options.apiUrl;
     this.token = options.token;
-  }
-
-  listDomains() {
-    const url = `${this.apiUrl}/domains`;
-    const headers = {
+    this.defaultHeaders = {
       authorization: `Bearer ${this.token}`
     };
 
-    return this.httpClient.get(url, headers);
+    domainApi(this);
+  }
+
+  api(path, method = 'get', headers = {}, data) {
+    const url = `${this.apiUrl}${path}`;
+
+    headers = Object.assign({}, this.defaultHeaders, headers);
+
+    return this.httpClient[method](url, headers, data);
   }
 }
 
