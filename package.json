@@ -2,7 +2,7 @@
   "name": "james-admin-client",
   "version": "1.0.0",
   "description": "JS library to help configuring James through web administration APIs",
-  "main": "src/js/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "gulp"
   },

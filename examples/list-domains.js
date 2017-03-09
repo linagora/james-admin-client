@@ -1,4 +1,4 @@
-const api = require('../src/js');
+const api = require('../src');
 const httpClient = require('./request-http-client');
 
 const Client = api.Client;

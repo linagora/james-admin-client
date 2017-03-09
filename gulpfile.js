@@ -25,13 +25,13 @@ gulp.task('clean', () => {
 
 gulp.task('js', () => {
   let stream = browserify({
-      entries: './src/js/index.js',
+      entries: './src/index.js',
       debug: true,
       standalone: 'james'
     })
     .transform('babelify', { presets: ['es2015'] })
     .bundle()
-    .pipe(source('app.js'));
+    .pipe(source('james-admin-client.js'));
 
   if (argv.production) {
     stream = stream
