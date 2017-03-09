@@ -1,0 +1,25 @@
+{
+  "name": "james-admin-client",
+  "version": "0.0.1",
+  "authors": [
+    "Linagora Folks <lgs-openpaas-dev@linagora.com>"
+  ],
+  "description": "JS library to help configuring James through web administration APIs",
+  "main": "dist/james-admin-client.js",
+  "moduleType": [
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "james",
+    "mail",
+    "api"
+  ],
+  "license": "AGPL-3.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "examples"
+  ]
+}
