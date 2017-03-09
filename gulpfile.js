@@ -6,9 +6,6 @@ const uglify = require('gulp-uglify');
 const argv = require('yargs').argv;
 const runSeq = require('run-sequence');
 const clean = require('gulp-clean');
-const htmlMin = require('gulp-htmlmin');
-const gulpif = require('gulp-if');
-const webserver = require('gulp-webserver');
 const eslint = require('gulp-eslint');
 
 gulp.task('default', ['lint', 'build']);
@@ -18,18 +15,12 @@ gulp.task('dev', () => {
 });
 
 gulp.task('build', (callback) => {
-  return runSeq('clean', 'html', 'js', callback);
+  return runSeq('clean', 'js', callback);
 });
 
 gulp.task('clean', () => {
   return gulp.src('build/*', { read: false })
     .pipe(clean());
-});
-
-gulp.task('html', () => {
-  return gulp.src(['src/*.html'])
-    .pipe(gulpif(argv.production, htmlMin({ collapseWhitespace: true })))
-    .pipe(gulp.dest('build'));
 });
 
 gulp.task('js', () => {
@@ -49,19 +40,6 @@ gulp.task('js', () => {
   }
 
   return stream.pipe(gulp.dest('./build'));
-});
-
-gulp.task('watch', () => {
-  gulp.watch('./src/js/**/*.js', ['js']);
-  gulp.watch('./src/*.html', ['html']);
-});
-
-gulp.task('server', () => {
-  gulp.src('build')
-    .pipe(webserver({
-      host: '0.0.0.0',
-      port: 8080
-    }));
 });
 
 gulp.task('lint', () => {
