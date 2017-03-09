@@ -2,6 +2,8 @@
 
 > JS library to help configuring James through web administration APIs
 
+[![Build Status](https://travis-ci.org/heroandtn3/james-admin-client.svg?branch=master)](https://travis-ci.org/heroandtn3/james-admin-client)
+
 ## Usage
 
 TODO
