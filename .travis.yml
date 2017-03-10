@@ -18,3 +18,6 @@ addons:
 
 script:
   - ./node_modules/.bin/gulp --production
+
+after_success:
+  - bash bin/release.sh
