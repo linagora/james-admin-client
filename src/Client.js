@@ -1,4 +1,5 @@
 const domainApi = require('./api/domain');
+const quotaApi = require('./api/quota');
 
 class Client {
   constructor(options) {
@@ -11,6 +12,7 @@ class Client {
     };
 
     domainApi(this);
+    quotaApi(this);
   }
 
   api(path, method = 'get', headers = {}, data) {

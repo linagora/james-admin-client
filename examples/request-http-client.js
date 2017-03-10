@@ -1,7 +1,7 @@
 const q = require('q');
 const request = require('request');
 
-const SUCCESS_RESPONSE_CODES = [200, 201];
+const SUCCESS_RESPONSE_CODES = [200, 201, 204];
 
 function post(url, headers, data, raw) {
   return q.Promise(function(resolve, reject) {
