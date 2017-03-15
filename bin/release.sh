@@ -22,6 +22,7 @@ git config --global user.name "Sang"
 git config --global user.email "heroandtn3@gmail.com"
 
 git add -A dist/
+git rm .travis.yml
 git commit -m "rebuild lib at ${rev}"
 
 git remote add dist https://$GH_TOKEN@github.com/heroandtn3/james-admin-client.git
