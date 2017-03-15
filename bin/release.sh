@@ -25,6 +25,6 @@ git add -A dist/
 git commit -m "rebuild lib at ${rev}"
 
 git remote add dist https://$GH_TOKEN@github.com/heroandtn3/james-admin-client.git
-git push -q dist HEAD:refs/heads/dist
+git push -f dist HEAD:refs/heads/dist
 
 exit 0
