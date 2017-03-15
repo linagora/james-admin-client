@@ -1,4 +1,4 @@
-const domainApi = require('./api/domain');
+const domainsApi = require('./api/domains');
 const quotaApi = require('./api/quota');
 const domainMappingsApi = require('./api/domain_mappings');
 
@@ -12,7 +12,7 @@ class Client {
       authorization: `Bearer ${this.token}`
     };
 
-    domainApi(this);
+    domainsApi(this);
     quotaApi(this);
     domainMappingsApi(this);
   }
