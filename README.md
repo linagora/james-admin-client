@@ -2,7 +2,7 @@
 
 > JS library to help configuring James through web administration APIs
 
-[![Build Status](https://travis-ci.org/heroandtn3/james-admin-client.svg?branch=master)](https://travis-ci.org/heroandtn3/james-admin-client)
+[![Build Status](https://travis-ci.org/linagora/james-admin-client.svg?branch=master)](https://travis-ci.org/linagora/james-admin-client)
 
 ## Usage
 
