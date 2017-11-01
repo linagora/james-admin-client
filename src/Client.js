@@ -1,6 +1,7 @@
 const domainsApi = require('./api/domains');
 const quotaApi = require('./api/quota');
 const domainMappingsApi = require('./api/domain_mappings');
+const groupApi = require('./api/group');
 
 class Client {
   constructor(options) {
@@ -15,6 +16,7 @@ class Client {
     domainsApi(this);
     quotaApi(this);
     domainMappingsApi(this);
+    groupApi(this);
   }
 
   api(path, method = 'get', headers = {}, data) {

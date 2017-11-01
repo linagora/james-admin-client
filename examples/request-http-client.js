@@ -37,6 +37,16 @@ function get(url, headers) {
   });
 }
 
+function remove(url, headers) {
+  return q.Promise(function(resolve, reject) {
+    request({
+      url,
+      headers,
+      method: 'DELETE'
+    }, errorHandle(resolve, reject));
+  });
+}
+
 function errorHandle(resolve, reject) {
   return (err, res, body) => {
     if (err) {
@@ -56,5 +66,6 @@ function errorHandle(resolve, reject) {
 module.exports = {
   put,
   get,
-  post
+  post,
+  remove
 };
