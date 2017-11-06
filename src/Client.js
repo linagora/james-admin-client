@@ -1,3 +1,5 @@
+const httpClient = require('./http-client');
+
 const domainsApi = require('./api/domains');
 const quotaApi = require('./api/quota');
 const domainMappingsApi = require('./api/domain_mappings');
@@ -5,8 +7,7 @@ const groupApi = require('./api/group');
 
 class Client {
   constructor(options) {
-    this.httpClient = options.httpClient;
-    this.promiseProvider = options.promiseProvider;
+    this.httpClient = options.httpClient || httpClient;
     this.apiUrl = options.apiUrl;
     this.token = options.token;
     this.defaultHeaders = {
