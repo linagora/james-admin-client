@@ -21,23 +21,8 @@ NPM and Yarn:
 ```javascript
 const { Client } = require('james-admin-client');
 
-
-const token = '...';
-const httpClient = {
-  get(url, headers) {
-    // ...
-  },
-  post(url, headers, data, raw) {
-    // ...
-  },
-  put(url, headers, data, raw) {
-    // ...
-  }
-}
-
 const options = {
-  httpClient,
-  token,
+  token: '...',
   apiUrl: 'http://james.yourserver.com'
 };
 const client = new Client(options);
