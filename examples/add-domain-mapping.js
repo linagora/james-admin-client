@@ -1,7 +1,4 @@
-const api = require('../src');
-const httpClient = require('./request-http-client');
-
-const Client = api.Client;
+const { Client } = require('../src');
 
 const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBvcGVuL' +
         'XBhYXMub3JnIiwiYWRtaW4iOnRydWUsImlhdCI6MTQ4OTAzODQzOH0.rgxCkdWEa-92a4R-72a9Z49k4LRvQDShgci5Y7qWRUP9IGJCK-lMkrHF' +
@@ -11,8 +8,6 @@ const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBvcGVuL' +
 
 function test() {
   const options = {
-    httpClient,
-    promiseProvider: null,
     token,
     apiUrl: 'http://192.168.1.165:8000'
   };
