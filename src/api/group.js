@@ -6,15 +6,15 @@ function mixin(client) {
   };
 
   client.listGroupMembers = (group) => {
-    return client.api(`${BASE_PATH}/${group}`, 'get');
+    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}`, 'get');
   };
 
   client.addGroupMember = (group, member) => {
-    return client.api(`${BASE_PATH}/${group}/${member}`, 'put');
+    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`, 'put');
   };
 
   client.removeGroupMember = (group, member) => {
-    return client.api(`${BASE_PATH}/${group}/${member}`, 'remove');
+    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`, 'remove');
   };
 }
 
