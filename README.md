@@ -12,14 +12,14 @@ Bower:
 
 NPM and Yarn:
 
-`npm install https://github.com/linagora/james-admin-client.git`
+`npm install @linagora/james-admin-client`
 
 `yarn add https://github.com/linagora/james-admin-client.git`
 
 ## Usage
 
 ```javascript
-const { Client } = require('james-admin-client');
+const { Client } = require('@linagora/james-admin-client');
 
 const options = {
   token: '...',
