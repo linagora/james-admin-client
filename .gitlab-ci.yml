@@ -1,0 +1,12 @@
+image: linagora/node-test-base:8
+
+stages:
+  - test
+
+test:
+  stage: test
+  tags:
+    - docker
+  script:
+    - npm i
+    - ./node_modules/.bin/gulp --production
