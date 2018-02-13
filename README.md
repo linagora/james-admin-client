@@ -1,6 +1,6 @@
 # james-admin-client
 
-> JS library to help configuring James through web administration APIs
+> JS library to help configuring James through [web administration APIs](https://github.com/linagora/james-project/blob/master/src/site/markdown/server/manage-webadmin.md)
 
 [![Build Status](https://travis-ci.org/linagora/james-admin-client.svg?branch=master)](https://travis-ci.org/linagora/james-admin-client)
 
