@@ -8,6 +8,10 @@ function mixin(client) {
   client.createDomain = (domain) => {
     return client.api(`${BASE_PATH}/${domain}`, 'put');
   };
+
+  client.removeDomain = (domain) => {
+    return client.api(`${BASE_PATH}/${domain}`, 'remove');
+  };
 }
 
 module.exports = mixin;
