@@ -75,7 +75,7 @@ gulp.task('commit-changes', () => {
 });
 
 gulp.task('push-changes', (cb) => {
-  git.push('origin', 'master', cb);
+  git.push('upstream', 'master', cb);
 });
 
 gulp.task('create-release-tag', (cb) => {
@@ -87,7 +87,7 @@ gulp.task('create-release-tag', (cb) => {
 gulp.task('push-release-tag', (callback) => {
   const version = getPackageJsonVersion();
 
-  git.push('origin', `refs/tags/v${version}`, callback);
+  git.push('upstream', `refs/tags/v${version}`, callback);
 });
 
 gulp.task('commit-release', () => {
