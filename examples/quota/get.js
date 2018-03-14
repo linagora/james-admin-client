@@ -1,4 +1,4 @@
-const { Client } = require('../src');
+const { Client } = require('../../src');
 
 const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBvcGVuL' +
         'XBhYXMub3JnIiwiYWRtaW4iOnRydWUsImlhdCI6MTQ4OTAzODQzOH0.rgxCkdWEa-92a4R-72a9Z49k4LRvQDShgci5Y7qWRUP9IGJCK-lMkrHF' +
@@ -9,7 +9,7 @@ const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhZG1pbkBvcGVuL' +
 function test() {
   const options = {
     token,
-    apiUrl: 'http://192.168.1.160:8000'
+    apiUrl: 'http://localhost:8000'
   };
   const client = new Client(options);
 
