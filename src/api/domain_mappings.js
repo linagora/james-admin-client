@@ -2,11 +2,17 @@ const BASE_PATH = '/domain_mappings';
 
 function mixin(client) {
   client.listDomainMappings = () => {
-    return client.api(BASE_PATH);
+    return client.api({
+      url: BASE_PATH
+    });
   };
 
   client.addDomainMapping = (domainMapping) => {
-    return client.api(BASE_PATH, 'put', {}, domainMapping);
+    return client.api({
+      url: BASE_PATH,
+      method: 'PUT',
+      data: domainMapping
+    });
   };
 }
 

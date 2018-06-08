@@ -2,19 +2,29 @@ const BASE_PATH = '/address/groups';
 
 function mixin(client) {
   client.listGroups = () => {
-    return client.api(BASE_PATH);
+    return client.api({
+      url: BASE_PATH
+    });
   };
 
   client.listGroupMembers = (group) => {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}`, 'get');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(group)}`
+    });
   };
 
   client.addGroupMember = (group, member) => {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`, 'put');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`,
+      method: 'PUT'
+    });
   };
 
   client.removeGroupMember = (group, member) => {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`, 'remove');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(group)}/${encodeURIComponent(member)}`,
+      method: 'DELETE'
+    });
   };
 }
 

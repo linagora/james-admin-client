@@ -10,18 +10,28 @@ module.exports = (client) => {
   };
 
   function addDestination(forward, destination) {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(forward)}/${DESTINATION_CONTEXT}/${encodeURIComponent(destination)}`, 'put');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(forward)}/${DESTINATION_CONTEXT}/${encodeURIComponent(destination)}`,
+      method: 'PUT'
+    });
   }
 
   function list() {
-    return client.api(BASE_PATH);
+    return client.api({
+      url: BASE_PATH
+    });
   }
 
   function listDestinationsOfForward(forward) {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(forward)}`);
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(forward)}`
+    });
   }
 
   function removeDestination(forward, destination) {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(forward)}/${DESTINATION_CONTEXT}/${encodeURIComponent(destination)}`, 'remove');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(forward)}/${DESTINATION_CONTEXT}/${encodeURIComponent(destination)}`,
+      method: 'DELETE'
+    });
   }
 };

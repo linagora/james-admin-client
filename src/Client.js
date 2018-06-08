@@ -9,12 +9,13 @@ const forwardApi = require('./api/forward');
 
 class Client {
   constructor(options) {
-    this.httpClient = options.httpClient || httpClient;
-    this.apiUrl = options.apiUrl;
-    this.token = options.token;
-    this.defaultHeaders = {
-      authorization: `Bearer ${this.token}`
-    };
+    this.httpClient = httpClient({
+      baseUrl: options.apiUrl,
+      auth: {
+        type: 'jwt',
+        token: options.token
+      }
+    });
 
     domainsApi(this);
     quotaApi(this);
@@ -24,12 +25,8 @@ class Client {
     forwardApi(this);
   }
 
-  api(path, method = 'get', headers = {}, data) {
-    const url = `${this.apiUrl}${path}`;
-
-    headers = Object.assign({}, this.defaultHeaders, headers);
-
-    return this.httpClient[method](url, headers, data);
+  api(config) {
+    return this.httpClient(config).then(resp => resp.data);
   }
 }
 

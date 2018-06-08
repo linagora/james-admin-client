@@ -45,17 +45,14 @@ const Client = james.Client;
 
 ## Release
 
-To release new patch version, run this command on `master` branch:
+Assume that you are in `master` branch and you have write access to the `origin`
+remote, type the following command to release a new version:
 
-`gulp release`
+`./scripts/release.sh x.y.z`
 
-New minor version:
+In case your Git remote is NOT `origin`:
 
-`gulp release --minor`
-
-New major version:
-
-`gulp release --major`
+`./scripts/release.sh x.y.z my-remote`
 
 ## Licence
 
