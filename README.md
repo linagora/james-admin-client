@@ -43,6 +43,22 @@ const Client = james.Client;
 ...
 ```
 
+## Test & linting
+
+Tests in `test` dir are provided by [mocha](https://mochajs.org) framework with [axios-mock-adapter](https://github.com/ctimmerm/axios-mock-adapter) and [chai-as-promised](https://github.com/domenic/chai-as-promised) plugins.
+
+To run execute all test cases:
+
+```
+npm run unit-test
+```
+
+To lint the code:
+
+```
+npm run lint
+```
+
 ## Release
 
 Assume that you are in `master` branch and you have write access to the `origin`
