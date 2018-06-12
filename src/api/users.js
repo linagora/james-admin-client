@@ -9,15 +9,24 @@ function mixin(client) {
   };
 
   function create({ username, password } = {}) {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(username)}`, 'put', {}, { password });
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(username)}`,
+      method: 'PUT',
+      data: { password }
+    });
   }
 
   function list() {
-    return client.api(BASE_PATH);
+    return client.api({
+      url: BASE_PATH
+    });
   }
 
   function remove(username) {
-    return client.api(`${BASE_PATH}/${encodeURIComponent(username)}`, 'remove');
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(username)}`,
+      method: 'DELETE'
+    });
   }
 
   function update({ username, password } = {}) {

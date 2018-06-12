@@ -9,4 +9,4 @@ test:
     - docker
   script:
     - npm i
-    - ./node_modules/.bin/gulp --production
+    - npm test
