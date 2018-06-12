@@ -6,6 +6,7 @@ const domainMappingsApi = require('./api/domain_mappings');
 const groupApi = require('./api/group');
 const usersApi = require('./api/users');
 const forwardApi = require('./api/forward');
+const mailRepositoriesApi = require('./api/mail_repositories');
 
 class Client {
   constructor(options) {
@@ -23,6 +24,7 @@ class Client {
     groupApi(this);
     usersApi(this);
     forwardApi(this);
+    mailRepositoriesApi(this);
   }
 
   api(config) {
