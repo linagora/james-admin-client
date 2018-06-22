@@ -27,10 +27,18 @@ function mixin(client) {
     });
   }
 
-  function getMail(repositoryId, mailKey) {
-    return client.api({
+  function getMail(repositoryId, mailKey, options = {}) {
+    const request = {
       url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails/${mailKey}`
-    });
+    };
+
+    if (options.additionalFields) {
+      request.params = {
+        additionalFields: options.additionalFields.join(',')
+      };
+    }
+
+    return client.api(request);
   }
 }
 
