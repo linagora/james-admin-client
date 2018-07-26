@@ -87,4 +87,16 @@ describe('mail_repositories.js', function() {
       })).to.eventually.deep.equal(response);
     });
   });
+
+  describe('#downloadEmlFile()', function() {
+    it('should send GET request to get a single mail details in Eml format with correct headers', function() {
+      const response = 'mail-detail';
+
+      this.mock.onGet('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails/mail-key-1', {
+        headers: { accept: 'message/rfc822' }
+      }).reply(200, response);
+
+      return expect(this.client.mailRepositories.downloadEmlFile('file://var/mail/error/', 'mail-key-1')).to.eventually.deep.equal(response);
+    });
+  });
 });

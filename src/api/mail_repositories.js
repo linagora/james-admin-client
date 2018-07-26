@@ -3,6 +3,7 @@ const BASE_PATH = '/mailRepositories';
 function mixin(client) {
   client.mailRepositories = {
     list,
+    downloadEmlFile,
     get,
     getMails,
     getMail
@@ -39,6 +40,15 @@ function mixin(client) {
     }
 
     return client.api(request);
+  }
+
+  function downloadEmlFile(repositoryId, mailKey) {
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails/${mailKey}`,
+      method: 'GET',
+      headers: { accept: 'message/rfc822' },
+      responseType: 'blob'
+    });
   }
 }
 
