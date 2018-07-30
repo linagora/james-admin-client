@@ -68,5 +68,35 @@ describe('mail_repositories.js', function() {
 
       return expect(this.client.mailRepositories.getMail('file://var/mail/error/', 'mail-key-1')).to.eventually.deep.equal(response);
     });
+
+    it('should send GET request to get a single mail detail with correct additionalFields params', function() {
+      const response = {
+        name: 'mail-key-1',
+        sender: 'sender@domain.com',
+        recipients: ['recipient1@domain.com', 'recipient2@domain.com'],
+        state: 'address-error',
+        error: 'A small message explaining what happened to that mail...'
+      };
+
+      this.mock.onGet('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails/mail-key-1', {
+        params: { additionalFields: 'headers,htmlBody' }
+      }).reply(200, response);
+
+      return expect(this.client.mailRepositories.getMail('file://var/mail/error/', 'mail-key-1', {
+        additionalFields: ['headers', 'htmlBody']
+      })).to.eventually.deep.equal(response);
+    });
+  });
+
+  describe('#downloadEmlFile()', function() {
+    it('should send GET request to get a single mail details in Eml format with correct headers', function() {
+      const response = 'mail-detail';
+
+      this.mock.onGet('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails/mail-key-1', {
+        headers: { accept: 'message/rfc822' }
+      }).reply(200, response);
+
+      return expect(this.client.mailRepositories.downloadEmlFile('file://var/mail/error/', 'mail-key-1')).to.eventually.deep.equal(response);
+    });
   });
 });
