@@ -99,4 +99,20 @@ describe('mail_repositories.js', function() {
       return expect(this.client.mailRepositories.downloadEmlFile('file://var/mail/error/', 'mail-key-1')).to.eventually.deep.equal(response);
     });
   });
+
+  describe('#removeMail()', function() {
+    it('should send DELETE request to delete a single mail in mail repository', function() {
+      this.mock.onDelete('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails/mail-key-1').reply(204);
+
+      return expect(this.client.mailRepositories.removeMail('file://var/mail/error/', 'mail-key-1')).to.be.fulfilled;
+    });
+  });
+
+  describe('#removeAllMails()', function() {
+    it('should send DELETE request to delete all mails in mail repository', function() {
+      this.mock.onDelete('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails').reply(201);
+
+      return expect(this.client.mailRepositories.removeAllMails('file://var/mail/error/')).to.be.fulfilled;
+    });
+  });
 });
