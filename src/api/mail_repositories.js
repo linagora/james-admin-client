@@ -6,7 +6,9 @@ function mixin(client) {
     downloadEmlFile,
     get,
     getMails,
-    getMail
+    getMail,
+    removeMail,
+    removeAllMails
   };
 
   function list() {
@@ -48,6 +50,20 @@ function mixin(client) {
       method: 'GET',
       headers: { accept: 'message/rfc822' },
       responseType: 'blob'
+    });
+  }
+
+  function removeMail(repositoryId, mailKey) {
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails/${mailKey}`,
+      method: 'DELETE'
+    });
+  }
+
+  function removeAllMails(repositoryId) {
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails`,
+      method: 'DELETE'
     });
   }
 }
