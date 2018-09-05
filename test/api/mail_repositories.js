@@ -115,4 +115,20 @@ describe('mail_repositories.js', function() {
       return expect(this.client.mailRepositories.removeAllMails('file://var/mail/error/')).to.be.fulfilled;
     });
   });
+
+  describe('#reprocessAllMails()', function() {
+    it('should send PATCH request to reprocess all mails from a mail repository', function() {
+      this.mock.onPatch('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails').reply(201);
+
+      return expect(this.client.mailRepositories.reprocessAllMails('file://var/mail/error/')).to.be.fulfilled;
+    });
+  });
+
+  describe('#reprocessMail()', function() {
+    it('should send PATCH request to reprocess a specific mail from a mail repository', function() {
+      this.mock.onPatch('/mailRepositories/file%3A%2F%2Fvar%2Fmail%2Ferror%2F/mails/mail-key').reply(201);
+
+      return expect(this.client.mailRepositories.reprocessMail('file://var/mail/error/', 'mail-key')).to.be.fulfilled;
+    });
+  });
 });

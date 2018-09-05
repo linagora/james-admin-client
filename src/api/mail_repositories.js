@@ -8,7 +8,9 @@ function mixin(client) {
     getMails,
     getMail,
     removeMail,
-    removeAllMails
+    removeAllMails,
+    reprocessAllMails,
+    reprocessMail
   };
 
   function list() {
@@ -64,6 +66,26 @@ function mixin(client) {
     return client.api({
       url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails`,
       method: 'DELETE'
+    });
+  }
+
+  function reprocessAllMails(repositoryId, { processor, queue } = {}) {
+    const action = 'reprocess';
+
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails`,
+      method: 'PATCH',
+      params: { action, processor, queue }
+    });
+  }
+
+  function reprocessMail(repositoryId, mailKey, { processor, queue } = {}) {
+    const action = 'reprocess';
+
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(repositoryId)}/mails/${mailKey}`,
+      method: 'PATCH',
+      params: { action, processor, queue }
     });
   }
 }
