@@ -31,5 +31,17 @@ describe('data_leak_prevention.js', function() {
         return expect(this.client.dlpRules.remove('abc.com')).to.be.fulfilled;
       });
     });
+
+    describe('#get()', function() {
+      it('should send GET request to get a single rule', function() {
+        const rule = {
+          id: 'rule1',
+          expression: 'something.malicious'
+        };
+
+        this.mock.onGet('/dlp/rules/abc.com/rules/rule1').reply(200, rule);
+        return expect(this.client.dlpRules.get('abc.com', 'rule1')).to.eventually.deep.equal(rule);
+      });
+    });
   });
 });
