@@ -1,19 +1,25 @@
-const BASE_PATH = '/domain_mappings';
+const BASE_PATH = '/domainMappings';
 
 function mixin(client) {
-  client.listDomainMappings = () => {
-    return client.api({
-      url: BASE_PATH
-    });
-  };
+  client.listDomainMappings = () => client.api({
+    url: BASE_PATH
+  });
 
-  client.addDomainMapping = (domainMapping) => {
-    return client.api({
-      url: BASE_PATH,
-      method: 'PUT',
-      data: domainMapping
-    });
-  };
+  client.listDomainAliases = sourceDomain => client.api({
+    url: `${BASE_PATH}/${sourceDomain}`
+  });
+
+  client.addDomainAlias = (sourceDomain, alias) => client.api({
+    url: `${BASE_PATH}/${sourceDomain}`,
+    method: 'PUT',
+    data: alias
+  });
+
+  client.removeDomainAlias = (sourceDomain, alias) => client.api({
+    url: `${BASE_PATH}/${sourceDomain}`,
+    method: 'DELETE',
+    data: alias
+  });
 }
 
 module.exports = mixin;
