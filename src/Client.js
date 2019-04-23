@@ -8,6 +8,7 @@ const usersApi = require('./api/users');
 const forwardApi = require('./api/forward');
 const mailRepositoriesApi = require('./api/mail_repositories');
 const dataLeakPreventionApi = require('./api/data_leak_prevention');
+const userAliasesApi = require('./api/user_aliases');
 
 class Client {
   constructor(options) {
@@ -27,6 +28,7 @@ class Client {
     forwardApi(this);
     mailRepositoriesApi(this);
     dataLeakPreventionApi(this);
+    userAliasesApi(this);
   }
 
   api(config) {
