@@ -20,6 +20,20 @@ function mixin(client) {
       method: 'DELETE'
     });
   };
+
+  client.listDomainAliases = domain => client.api({
+    url: `${BASE_PATH}/${domain}/aliases`
+  });
+
+  client.addDomainAlias = (domain, alias) => client.api({
+    url: `${BASE_PATH}/${domain}/aliases/${alias}`,
+    method: 'PUT'
+  });
+
+  client.removeDomainAlias = (domain, alias) => client.api({
+    url: `${BASE_PATH}/${domain}/aliases/${alias}`,
+    method: 'DELETE'
+  });
 }
 
 module.exports = mixin;
