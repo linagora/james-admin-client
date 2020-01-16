@@ -10,6 +10,7 @@ const mailRepositoriesApi = require('./api/mail_repositories');
 const dataLeakPreventionApi = require('./api/data_leak_prevention');
 const userAliasesApi = require('./api/user_aliases');
 const deletedMessages = require('./api/deleted_messages');
+const tasksApi = require('./api/tasks');
 
 class Client {
   constructor(options) {
@@ -31,6 +32,7 @@ class Client {
     dataLeakPreventionApi(this);
     userAliasesApi(this);
     deletedMessages(this);
+    tasksApi(this);
   }
 
   api(config) {
