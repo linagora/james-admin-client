@@ -3,6 +3,7 @@ const BASE_PATH = '/users';
 function mixin(client) {
   client.users = {
     create,
+    getAllowedFromHeaders,
     list,
     remove,
     update
@@ -32,6 +33,12 @@ function mixin(client) {
   function update({ username, password } = {}) {
     // same as create
     return create({ username, password });
+  }
+
+  function getAllowedFromHeaders(username) {
+    return client.api({
+      url: `${BASE_PATH}/${encodeURIComponent(username)}/allowedFromHeaders`
+    });
   }
 }
 
