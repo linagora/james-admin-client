@@ -11,6 +11,7 @@ const dataLeakPreventionApi = require('./api/data_leak_prevention');
 const userAliasesApi = require('./api/user_aliases');
 const deletedMessages = require('./api/deleted_messages');
 const tasksApi = require('./api/tasks');
+const healthCheckApi = require('./api/health_check');
 
 class Client {
   constructor(options) {
@@ -33,6 +34,7 @@ class Client {
     userAliasesApi(this);
     deletedMessages(this);
     tasksApi(this);
+    healthCheckApi(this);
   }
 
   api(config) {
