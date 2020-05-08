@@ -1,6 +1,6 @@
 {
   "name": "@linagora/james-admin-client",
-  "version": "0.14.0-dev",
+  "version": "0.14.0",
   "description": "JS library to help configuring James through web administration APIs",
   "main": "src/index.js",
   "scripts": {
